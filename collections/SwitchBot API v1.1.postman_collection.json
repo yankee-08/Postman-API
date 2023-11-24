@@ -1,0 +1,1084 @@
+{
+	"info": {
+		"_postman_id": "7f66f632-8299-4a90-8a2a-dcf845e146e0",
+		"name": "SwitchBot API v1.1",
+		"description": "# 概要\n\nこのCollectionは`SwitchBot API v1.1`のAPIリクエストです。  \n各APIの仕様詳細については、GitHub上の公式の[README.md](https://github.com/OpenWonderLabs/SwitchBotAPI)をご確認ください。",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29245185",
+		"_collection_link": "https://www.postman.com/lunar-resonance-715260/workspace/switchbot-api-ws/collection/29245185-7f66f632-8299-4a90-8a2a-dcf845e146e0?action=share&source=collection_link&creator=29245185"
+	},
+	"item": [
+		{
+			"name": "1. デバイス情報取得",
+			"item": [
+				{
+					"name": "登録デバイス一覧",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/devices",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "個別デバイス情報",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/devices/:deviceid/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"devices",
+								":deviceid",
+								"status"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "deviceid",
+									"value": "{{deviceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "このフォルダはデバイの一覧取得や各デバイスの詳細情報（温度など）を取得するためのAPIリクエストをまとめています。\nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#devices)を確認ください。"
+		},
+		{
+			"name": "2. デバイス制御",
+			"item": [
+				{
+					"name": "プラグミニ（JP）",
+					"item": [
+						{
+							"name": "給電ON",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "t",
+										"value": "{{t}}",
+										"type": "text"
+									},
+									{
+										"key": "sign",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "nonce",
+										"value": "{{nonce}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"command\": \"turnOn\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.1",
+										"devices",
+										":id",
+										"commands"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{deviceId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "給電OFF",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "t",
+										"value": "{{t}}",
+										"type": "text"
+									},
+									{
+										"key": "sign",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "nonce",
+										"value": "{{nonce}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"command\": \"turnOff\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.1",
+										"devices",
+										":id",
+										"commands"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{deviceId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "トグル",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "t",
+										"value": "{{t}}",
+										"type": "text"
+									},
+									{
+										"key": "sign",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "nonce",
+										"value": "{{nonce}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"command\": \"toggle\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.1",
+										"devices",
+										":id",
+										"commands"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{deviceId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "このフォルダは**プラグミニ（JP）**を遠隔制御するためのAPIリクエストをまとめています。  \nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#plug-mini-jp-2)を確認ください。"
+				},
+				{
+					"name": "ボット",
+					"item": [
+						{
+							"name": "Switch Mode",
+							"item": [
+								{
+									"name": "ON",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "t",
+												"value": "{{t}}",
+												"type": "text"
+											},
+											{
+												"key": "sign",
+												"value": "{{sign}}",
+												"type": "text"
+											},
+											{
+												"key": "nonce",
+												"value": "{{nonce}}",
+												"type": "text"
+											},
+											{
+												"key": "",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"command\": \"turnOn\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1.1",
+												"devices",
+												":id",
+												"commands"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{deviceId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "OFF",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "t",
+												"value": "{{t}}",
+												"type": "text"
+											},
+											{
+												"key": "sign",
+												"value": "{{sign}}",
+												"type": "text"
+											},
+											{
+												"key": "nonce",
+												"value": "{{nonce}}",
+												"type": "text"
+											},
+											{
+												"key": "",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"command\": \"turnOff\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1.1",
+												"devices",
+												":id",
+												"commands"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{deviceId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Press Mode",
+							"item": [
+								{
+									"name": "プレス",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "t",
+												"value": "{{t}}",
+												"type": "text"
+											},
+											{
+												"key": "sign",
+												"value": "{{sign}}",
+												"type": "text"
+											},
+											{
+												"key": "nonce",
+												"value": "{{nonce}}",
+												"type": "text"
+											},
+											{
+												"key": "",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"command\": \"press\",\r\n    \"parameter\": \"default\",\r\n    \"commandType\": \"command\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1.1/devices/:id/commands",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1.1",
+												"devices",
+												":id",
+												"commands"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "{{deviceId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"description": "このフォルダは**ボット**を遠隔制御するためのAPIリクエストをまとめています。  \nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#bot-2)を確認ください。"
+				}
+			],
+			"description": "このフォルダは各デバイスを遠隔制御するためのAPIリクエストをまとめています。  \nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#send-device-control-commands)を確認ください。"
+		},
+		{
+			"name": "3. シーン制御",
+			"item": [
+				{
+					"name": "登録シーン一覧",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/scenes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"scenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "個別シーン実行",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/scenes/:sceneid/execute",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"scenes",
+								":sceneid",
+								"execute"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "sceneid",
+									"value": "{{sceneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "このフォルダはシーンの一覧を取得・または遠隔制御するためのAPIリクエストをまとめています。  \nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#scenes)を確認ください。"
+		},
+		{
+			"name": "4. Webhook",
+			"item": [
+				{
+					"name": "Webhook登録",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\":\"setupWebhook\",\r\n    \"url\":\"{{webhookUrl}}\",\r\n    \"deviceList\":\"ALL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/setupWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"setupWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook URL取得",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"queryUrl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/queryWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"queryWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook構成取得",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"queryDetails\",\r\n    \"urls\":[\"{{webhookUrl}}\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/queryWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"queryWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook有効化",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"updateWebhook\",\r\n    \"config\":{\r\n        \"url\":\"{{webhookUrl}}\",\r\n        \"enable\":true\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/updateWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"updateWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook無効化",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"updateWebhook\",\r\n    \"config\":{\r\n        \"url\":\"{{webhookUrl}}\",\r\n        \"enable\":false\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/updateWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"updateWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook削除",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "t",
+								"value": "{{t}}",
+								"type": "text"
+							},
+							{
+								"key": "sign",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "nonce",
+								"value": "{{nonce}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\":\"deleteWebhook\",\r\n    \"url\":\"{{webhookUrl}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1.1/webhook/deleteWebhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1.1",
+								"webhook",
+								"deleteWebhook"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "このフォルダはWebhookの登録・更新・削除するためのAPIリクエストをまとめています。  \nAPIの詳細は[公式README.md](https://github.com/OpenWonderLabs/SwitchBotAPI#webhook)を確認ください。"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"let token = pm.environment.get(\"token\");",
+					"let secret = pm.environment.get(\"secret\");",
+					"",
+					"const t = Date.now(); // UnixTime",
+					"const uuid = require('uuid');",
+					"const nonce = uuid.v4();",
+					"const message = token + t + nonce;",
+					"const sign =",
+					"    CryptoJS.enc.Base64.stringify(",
+					"        CryptoJS.HmacSHA256(message, secret)",
+					"    );",
+					"",
+					"pm.collectionVariables.set(\"sign\", sign);",
+					"pm.collectionVariables.set(\"nonce\", nonce);",
+					"pm.collectionVariables.set(\"t\", t);",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.switch-bot.com",
+			"type": "string"
+		},
+		{
+			"key": "sign",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "nonce",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "t",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "deviceId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sceneId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "webhookUrl",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
